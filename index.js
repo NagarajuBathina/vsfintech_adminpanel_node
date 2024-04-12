@@ -77,7 +77,7 @@ app.post('/upload-broad', upload.single('file'), (req, res) => {
     console.log('File uploaded:', req.file);
     comparisionController.uploadBroad(__dirname + "/uploads/" + req.file.filename,req.file.originalname,(error)=>{
         if(error){
-            return res.status(5000).json({error:'error uploading csv file'});
+            return res.status(500).json({error:'error uploading csv file'});
         }
         res.json({message:'file uploaded successfully'});
     }); 
@@ -106,7 +106,7 @@ app.post('/upload-thematic', upload.single('file'), (req, res) => {
     console.log('File uploaded:', req.file);
     comparisionController.uploadThematic(__dirname + "/uploads/" + req.file.filename,req.file.originalname,(error)=>{
         if(error){
-            return res.status(5000).json({error:'error uploading csv file'});
+            return res.status(500).json({error:'error uploading csv file'});
         }
         res.json({message:'file uploaded successfully'});
     }); 
@@ -120,7 +120,7 @@ app.post('/upload-sector', upload.single('file'), (req, res) => {
     console.log('File uploaded:', req.file);
     comparisionController.uploadSector(__dirname + "/uploads/" + req.file.filename,req.file.originalname,(error)=>{
         if(error){
-            return res.status(5000).json({error:'error uploading csv file'});
+            return res.status(500).json({error:'error uploading csv file'});
         }
         res.json({message:'file uploaded successfully'});
     }); 
@@ -151,7 +151,7 @@ app.post('/upload-month-week', upload.single('file'), (req, res) => {
     console.log('File uploaded:', req.file);
     month_week_controller.uploadMonthAndWeek(__dirname + "/uploads/" + req.file.filename,req.file.originalname,(error)=>{
         if(error){
-            return res.status(5000).json({error:'error uploading csv file'});
+            return res.status(500).json({error:'error uploading csv file'});
         }
         res.json({message:'file uploaded successfully'});
     }); 
@@ -293,7 +293,7 @@ app.use((req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 1000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, ()=>{
     console.log(`App is listening on port ${PORT}`);
